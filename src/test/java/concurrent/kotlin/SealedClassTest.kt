@@ -1,4 +1,4 @@
-package concurrent
+package concurrent.kotlin
 
 import org.junit.Test
 

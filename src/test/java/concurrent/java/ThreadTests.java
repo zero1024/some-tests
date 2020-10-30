@@ -1,4 +1,4 @@
-package concurrent;
+package concurrent.java;
 
 import org.junit.Test;
 

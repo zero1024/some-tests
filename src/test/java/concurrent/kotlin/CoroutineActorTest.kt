@@ -1,4 +1,4 @@
-package concurrent
+package concurrent.kotlin
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.actor

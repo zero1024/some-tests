@@ -1,4 +1,4 @@
-package concurrent
+package concurrent.kotlin
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
