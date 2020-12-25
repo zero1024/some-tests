@@ -1,4 +1,4 @@
-package concurrent.java;
+package compiler.java;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package concurrent.kotlin
+package compiler.kotlin
 
 import org.junit.jupiter.api.Test
 
