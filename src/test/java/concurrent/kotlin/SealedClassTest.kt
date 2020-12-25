@@ -1,6 +1,6 @@
 package concurrent.kotlin
 
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class SealedClassTest {
 

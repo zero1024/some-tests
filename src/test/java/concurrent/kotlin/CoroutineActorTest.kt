@@ -2,7 +2,7 @@ package concurrent.kotlin
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.actor
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import kotlin.coroutines.CoroutineContext
 
 class CoroutineActorTest {
