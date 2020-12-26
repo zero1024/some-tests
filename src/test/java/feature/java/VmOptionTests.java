@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VmOptionTests {
 
+    /**
+     * -XX:+ShowCodeDetailsInExceptionMessages
+     */
     @Test
     public void testNpe() {
         String s = null;
