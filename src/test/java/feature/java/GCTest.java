@@ -10,7 +10,7 @@ import static org.apache.commons.io.FileUtils.byteCountToDisplaySize;
 public class GCTest {
 
     /**
-     * -verbose:gc -XX:+UseZGC
+     * -verbose:gc -XX:+UseZGC -Xlog:gc*
      */
     @Test
     void testVerboseLogging() {
