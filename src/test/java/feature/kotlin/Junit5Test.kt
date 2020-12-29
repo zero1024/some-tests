@@ -1,5 +1,7 @@
 package concurrent.kotlin
 
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -26,6 +28,18 @@ class Junit5Test {
     }
 
 
+    @Test
+    internal fun dataClassAssertionsTest() {
+        val person = Person("Oleg")
+        val e = catchThrowable { assertThat(person).isEqualTo(Person("Anton")) }
+        assertThat(e.message).contains("""
+            Expecting:
+             <Person(name=Oleg)>
+            to be equal to:
+             <Person(name=Anton)>
+            but was not.
+        """.trimIndent())
+    }
 }
 
 data class Person(val name: String)
