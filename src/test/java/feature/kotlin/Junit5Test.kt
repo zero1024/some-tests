@@ -5,13 +5,16 @@ import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
+import java.util.stream.Stream
 import kotlin.random.Random
 
 
-class Junit5Test {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+open class Junit5Test {
 
     @Nested
-    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     inner class TestLifecycleTest {
 
         private val testPerson = Person(Random.Default.nextInt(1000).toString())
@@ -46,6 +49,18 @@ class Junit5Test {
             .ignoringFields("name")
             .isEqualTo(Person("Anton"))
     }
+
+    @ParameterizedTest
+    @MethodSource("intPairProvider")
+    fun paramTest(testData: Pair<Int, String>) {
+        assertThat(testData.first.toString()).isEqualTo(testData.second)
+    }
+
+    private fun intPairProvider() = Stream.of(
+        1 to "1",
+//        1 to "2",
+        3 to "3"
+    )
 }
 
 data class Person(val name: String)
