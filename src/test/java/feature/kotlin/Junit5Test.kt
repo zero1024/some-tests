@@ -32,13 +32,19 @@ class Junit5Test {
     internal fun dataClassAssertionsTest() {
         val person = Person("Oleg")
         val e = catchThrowable { assertThat(person).isEqualTo(Person("Anton")) }
-        assertThat(e.message).contains("""
+        assertThat(e.message).contains(
+            """
             Expecting:
              <Person(name=Oleg)>
             to be equal to:
              <Person(name=Anton)>
             but was not.
-        """.trimIndent())
+        """.trimIndent()
+        )
+        assertThat(person)
+            .usingRecursiveComparison()
+            .ignoringFields("name")
+            .isEqualTo(Person("Anton"))
     }
 }
 
