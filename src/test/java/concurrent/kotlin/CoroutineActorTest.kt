@@ -37,7 +37,7 @@ object IncCounter : CounterMsg()
 class GetCounter(val response: CompletableDeferred<Int>) : CounterMsg()
 
 fun CoroutineScope.counterActor(
-        context: CoroutineContext = Dispatchers.Unconfined
+    context: CoroutineContext = Dispatchers.Unconfined
 ) = actor<CounterMsg>(context = context, block = {
     var counter = 0
     for (msg in channel) {
