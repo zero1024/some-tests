@@ -1,2 +1,3 @@
 rootProject.name = 'some-tests'
+include 'spring-boot-test'
 
