@@ -24,7 +24,7 @@ sealed class Hand permits LeftHand, RightHand {
 
 }
 
-final class LeftHand extends Hand {
+non-sealed class LeftHand extends Hand {
 }
 
 final class RightHand extends Hand {

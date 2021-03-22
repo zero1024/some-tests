@@ -1,4 +1,4 @@
-package feature;
+package feature.java;
 
 import org.junit.jupiter.api.Test;
 
