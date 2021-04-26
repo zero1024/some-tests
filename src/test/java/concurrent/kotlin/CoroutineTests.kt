@@ -1,10 +1,9 @@
 package concurrent.kotlin
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.actor
 import org.junit.jupiter.api.Test
+import kotlin.coroutines.coroutineContext
 
 class CoroutineTests {
 
@@ -22,4 +21,45 @@ class CoroutineTests {
         }
         println("End")
     }
+
+    @ObsoleteCoroutinesApi
+    @Test
+    fun testNestedExecution() {
+        runBlocking {
+            launch {
+                delay(10000)
+                println("Nested launch is done!")
+            }
+            val res = async {
+                delay(10000)
+                println("Nested async is done!")
+            }
+            val actor = actor<Int> {
+                for (i in channel) {
+                    println(i)
+                }
+                println("Nested actor is done!")
+            }
+            coroutine1()
+            coroutine2()
+            delay(1000)
+            actor.close()
+            println("Outer launch is done!")
+        }
+    }
+
+    fun CoroutineScope.coroutine1() {
+        launch {
+            delay(15000)
+            println("Launch from method is done! As expected!")
+        }
+    }
+
+    fun CoroutineScope.coroutine2() {
+        GlobalScope.launch {
+            delay(16000)
+            println("Launch from method is done! Not expected!")
+        }
+    }
+
 }
