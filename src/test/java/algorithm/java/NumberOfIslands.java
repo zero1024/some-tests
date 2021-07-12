@@ -24,19 +24,15 @@ public class NumberOfIslands {
 
         int res = 0;
 
-        int n = grid.length;
-
-        if (n == 0) {
+        if (grid.length == 0) {
             return 0;
         }
 
-        int m = grid[0].length;
+        boolean[][] cache = new boolean[grid.length][grid[0].length];
 
-        boolean[][] cache = new boolean[n][m];
-
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                if (dfs(grid, cache, i, j, n, m)) {
+                if (dfs(grid, cache, i, j)) {
                     res++;
                 }
             }
@@ -46,16 +42,16 @@ public class NumberOfIslands {
 
     }
 
-    private static boolean dfs(char[][] grid, boolean[][] cache, int i, int j, int n, int m) {
+    private static boolean dfs(char[][] grid, boolean[][] cache, int i, int j) {
         if (i >= 0 && j >= 0 &&
-                i < n && j < m &&
+                i < grid.length && j < grid[0].length &&
                 grid[i][j] == '1' && !cache[i][j]
         ) {
             cache[i][j] = true;
-            dfs(grid, cache, i - 1, j, n, m);
-            dfs(grid, cache, i + 1, j, n, m);
-            dfs(grid, cache, i, j - 1, n, m);
-            dfs(grid, cache, i, j + 1, n, m);
+            dfs(grid, cache, i - 1, j);
+            dfs(grid, cache, i + 1, j);
+            dfs(grid, cache, i, j - 1);
+            dfs(grid, cache, i, j + 1);
             return true;
         }
         return false;
