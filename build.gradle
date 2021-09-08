@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.21'
 }
 
 group 'org.example'
@@ -30,8 +30,8 @@ compileTestKotlin {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.21'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.21'
     implementation group: 'commons-io', name: 'commons-io', version: '2.8.0'
     implementation group: 'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.18'
 
